@@ -51,5 +51,5 @@ Erva (hero com a foto inteira) → Papel (manifesto) → **Lima (comissão)** �
 3. A foto do hero aparece inteira (cuia, celular e carro). Logo centralizada no topo, sem botões na hero.
 4. Movimento conforme a rolagem (pedido do cliente): `useRevealOnScroll` + atributos `data-reveal` (`up`, `left`, `scale`, `wipe`, `linhas`, `cascata`, `barras`). Tudo desligado com "reduzir movimento".
 5. Modalidades com cara de tecnologia: pílula deslizante nas abas, visor com marcas de canto, varredura com linha lima na troca de foto e avanço automático com barra de progresso (pausa com mouse/foco e para quando a pessoa escolhe).
-6. Manifesto que acende com a rolagem: as palavras saem do cinza-claro para a cor da tinta e as palavras-chave (transparência, tecnologia, respeito à nossa cidade) ganham marca-texto lima.
+6. Manifesto preso na tela: a seção fica parada enquanto a frase acende palavra por palavra (com uma barra fina de progresso) e só depois a página continua. Só "nossa cidade" ganha marca-texto lima.
 7. Texto alinhado à esquerda; centro só em elementos pontuais, como a chamada final.
