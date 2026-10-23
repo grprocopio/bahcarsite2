@@ -75,7 +75,7 @@ interface VitrineProps {
 /** Uma categoria: texto numa coluna limpa, foto ao lado (nada sobreposto ao carro) */
 const Vitrine: React.FC<VitrineProps> = ({ item, fotoRef, textoRef }) => (
   <div className="relative w-screen h-full shrink-0">
-    <div className="h-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-44 sm:pt-52 lg:pt-44 pb-24 sm:pb-28 flex flex-col justify-center lg:grid lg:grid-cols-12 lg:items-center gap-5 sm:gap-8 lg:gap-14">
+    <div className="h-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-40 sm:pt-48 lg:pt-40 pb-24 sm:pb-28 flex flex-col justify-center lg:grid lg:grid-cols-12 lg:items-center gap-5 sm:gap-8 lg:gap-14">
       {/* Foto: em cima no celular, à direita no computador */}
       <div className="lg:order-2 lg:col-span-7 shrink-0">
         <div className="relative h-[clamp(120px,25svh,250px)] lg:h-auto lg:aspect-[16/10] overflow-hidden rounded-xl bg-erva-2">
@@ -238,7 +238,7 @@ export const Modalities: React.FC = () => {
       >
         {/* Título fixo da seção: fica parado enquanto as categorias passam */}
         <div className="absolute top-0 inset-x-0 z-10 pointer-events-none">
-          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-[4.75rem] sm:pt-24">
+          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-[4.1rem] sm:pt-[4.75rem] lg:pt-[4.5rem]">
             <h2 data-reveal="linhas" className="titulo uppercase text-white text-[clamp(2.2rem,12.5vw,4rem)] lg:text-[clamp(4rem,6.6vw,6.5rem)]" style={{ fontWeight: 900 }}>
               <span className="linha">
                 <span>Modalidades</span>
