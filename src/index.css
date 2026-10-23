@@ -112,6 +112,30 @@ body {
   .texto-contorno { -webkit-text-stroke-width: 1.75px; }
 }
 
+/* Manifesto: palavras acendem conforme a rolagem; palavras-chave ganham marca-texto lima */
+.manifesto .palavra {
+  color: rgba(17, 23, 12, 0.14);
+  transition: color 0.35s ease-out;
+}
+.manifesto .palavra.acesa {
+  color: var(--color-erva);
+}
+.manifesto .marca-texto {
+  padding: 0 0.12em;
+  margin: 0 -0.06em;
+  border-radius: 0.12em;
+  background-image: linear-gradient(var(--color-lima), var(--color-lima));
+  background-repeat: no-repeat;
+  background-position: left 75%;
+  background-size: 0% 74%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.manifesto .marca-texto.marcado {
+  background-size: 100% 74%;
+}
+
 .numeros {
   font-variant-numeric: tabular-nums;
 }
