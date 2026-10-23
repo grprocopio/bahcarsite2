@@ -25,9 +25,9 @@ A identidade vem da própria marca: o logo é um "bah" geométrico e gordinho, v
 |---|---|---|
 | Lima | `#AEE827` | cor do logo; superfície da seção de comissão, botão principal |
 | Lima escuro | `#97CC1C` | hover do botão principal |
-| Erva | `#11170C` | fundo escuro (hero, modalidades, rodapé); tinta sobre lima/papel |
+| Erva | `#11170C` | fundo escuro (hero, modalidades, chamada final, rodapé); tinta sobre lima/papel |
 | Erva 2 | `#1B2414` | superfícies elevadas no escuro |
-| Papel | `#EEF1E8` | fundo claro (manifesto, chamada final) |
+| Papel | `#EEF1E8` | fundo claro (manifesto) e modais |
 | Musgo | `#A3AC98` | texto secundário sobre fundo escuro |
 | Pedra | `#555D4D` | texto secundário sobre papel e lima |
 
@@ -50,5 +50,5 @@ Erva (hero com a foto inteira) → Papel (manifesto) → **Lima (comissão)** �
 2. Quase nada brilha: só um brilho leve no "se mover diferente." da chamada final, como na versão anterior.
 3. A foto do hero aparece inteira (cuia, celular e carro). Logo centralizada no topo, sem botões na hero.
 4. Movimento conforme a rolagem (pedido do cliente): `useRevealOnScroll` + atributos `data-reveal` (`up`, `left`, `scale`, `wipe`, `linhas`, `cascata`, `barras`). Tudo desligado com "reduzir movimento".
-6. Modalidades com cara de tecnologia: pílula deslizante nas abas, visor com marcas de canto, varredura com linha lima na troca de foto e avanço automático com barra de progresso (pausa com mouse/foco e para quando a pessoa escolhe).
-5. Texto alinhado à esquerda; centro só em elementos pontuais.
+5. Modalidades com cara de tecnologia: pílula deslizante nas abas, visor com marcas de canto, varredura com linha lima na troca de foto e avanço automático com barra de progresso (pausa com mouse/foco e para quando a pessoa escolhe).
+6. Texto alinhado à esquerda; centro só em elementos pontuais, como a chamada final.
