@@ -43,7 +43,7 @@ export const Hero: React.FC<HeroProps> = () => {
         <h1
           data-reveal="linhas"
           style={{ ['--d' as string]: 2 }}
-          className="titulo-impacto text-[clamp(2.5rem,10vw,7rem)] lg:text-[clamp(3.6rem,5.6vw,6.25rem)] text-white"
+          className="titulo-impacto hero-titulo text-[clamp(2.5rem,10vw,7rem)] lg:text-[clamp(3.6rem,5.6vw,6.25rem)] text-white"
         >
           {LINHAS.map((linha, i) => (
             <span key={i} className="linha">
@@ -65,12 +65,10 @@ export const Hero: React.FC<HeroProps> = () => {
           className="block w-full h-auto"
           loading="eager"
         />
-        <div className="absolute inset-x-0 top-0 h-[12%] bg-gradient-to-b from-erva to-transparent" aria-hidden="true" />
-        <div className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-erva to-transparent" aria-hidden="true" />
       </div>
 
       {/* Desktop: a foto ocupa a tela inteira; o título fica sobre o céu */}
-      <div className="hidden lg:block absolute inset-x-0 bottom-0 top-[24%] hero-foto">
+      <div className="hidden lg:block absolute inset-0 hero-foto">
         <img
           src="/hero-rua-1920.webp"
           srcSet="/hero-rua-1920.webp 1920w, /hero-rua-2912.webp 2912w"
@@ -83,8 +81,6 @@ export const Hero: React.FC<HeroProps> = () => {
           className="absolute inset-0 w-full h-full object-cover object-bottom"
           loading="eager"
         />
-        <div className="absolute inset-x-0 top-0 h-[22%] bg-gradient-to-b from-erva to-transparent" aria-hidden="true" />
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-erva to-transparent" aria-hidden="true" />
       </div>
     </section>
   );
