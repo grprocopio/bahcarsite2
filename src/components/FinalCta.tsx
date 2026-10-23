@@ -13,7 +13,7 @@ export const FinalCta: React.FC<FinalCtaProps> = ({ onOpenLaunch, onOpenPartner 
           <span className="linha">
             <span style={{ ['--i' as string]: 0 }}>Santa Maria vai</span>
           </span>
-          <span className="linha text-lima drop-shadow-[0_0_30px_rgba(174,232,39,0.25)]">
+          <span className="linha text-lima [text-shadow:0_0_30px_rgba(174,232,39,0.25)]">
             <span style={{ ['--i' as string]: 1 }}>se mover diferente.</span>
           </span>
         </h2>

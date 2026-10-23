@@ -16,7 +16,8 @@ const FRACAO_PALAVRAS = 0.8;
 
 export const ManifestoSection: React.FC = () => {
   const secaoRef = useRef<HTMLElement>(null);
-  const [progresso, setProgresso] = useState(0);
+  const [acesas, setAcesas] = useState(0);
+  const barraRef = useRef<HTMLDivElement>(null);
   const [reduz, setReduz] = useState(false);
 
   const palavras = useMemo(() => {
@@ -33,7 +34,7 @@ export const ManifestoSection: React.FC = () => {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setReduz(true);
-      setProgresso(1);
+      setAcesas(Number.MAX_SAFE_INTEGER);
       return;
     }
     const secao = secaoRef.current;
@@ -44,8 +45,11 @@ export const ManifestoSection: React.FC = () => {
       ticking = false;
       const r = secao.getBoundingClientRect();
       const percurso = secao.offsetHeight - window.innerHeight;
-      const p = percurso > 0 ? -r.top / percurso : 1;
-      setProgresso(Math.min(1, Math.max(0, p)));
+      const p = Math.min(1, Math.max(0, percurso > 0 ? -r.top / percurso : 1));
+      const fracao = Math.min(1, p / FRACAO_PALAVRAS);
+      // A barra é atualizada direto no estilo; o React só re-renderiza quando muda o número de palavras acesas
+      if (barraRef.current) barraRef.current.style.transform = `scaleX(${fracao})`;
+      setAcesas(Math.round(fracao * total));
     };
     const onScroll = () => {
       if (!ticking) {
@@ -60,9 +64,7 @@ export const ManifestoSection: React.FC = () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
     };
-  }, []);
-
-  const acesas = Math.round(Math.min(1, progresso / FRACAO_PALAVRAS) * total);
+  }, [total]);
 
   let cursor = 0;
   const conteudo = TRECHOS.map((t, g) => {
@@ -107,7 +109,7 @@ export const ManifestoSection: React.FC = () => {
           {/* Barra de progresso discreta da leitura */}
           {!reduz && (
             <div className="mt-10 sm:mt-14 h-[3px] w-full bg-erva/10 rounded-full overflow-hidden" aria-hidden="true">
-              <div className="h-full bg-erva origin-left" style={{ transform: `scaleX(${Math.min(1, progresso / FRACAO_PALAVRAS)})` }} />
+              <div ref={barraRef} className="h-full bg-erva origin-left will-change-transform" style={{ transform: 'scaleX(0)' }} />
             </div>
           )}
           </div>

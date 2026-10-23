@@ -32,7 +32,7 @@ export const Hero: React.FC<HeroProps> = () => {
 
       {/* Mobile: recorte da foto vertical mostrando cuia, celular e carro */}
       <div className="lg:hidden relative -mt-6 aspect-[4/5] hero-foto" aria-hidden="true">
-        <img src="/hero-mobile.jpg?v=4" alt="" className="w-full h-full object-cover object-[50%_82%]" loading="eager" />
+        <img src="/hero-mobile-1080.webp" alt="" width={1080} height={2340} decoding="async" fetchPriority="high" className="w-full h-full object-cover object-[50%_82%]" loading="eager" />
         <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-erva to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-erva to-transparent" />
       </div>
@@ -40,7 +40,13 @@ export const Hero: React.FC<HeroProps> = () => {
       {/* Desktop: a foto aparece inteira — cuia, celular e carro — logo abaixo do título */}
       <div className="hidden lg:block relative -mt-[14vw] hero-foto">
         <img
-          src="/carromate.jpg"
+          src="/carromate-1920.webp"
+          srcSet="/carromate-1920.webp 1920w, /carromate-2752.webp 2752w"
+          sizes="100vw"
+          width={1920}
+          height={1072}
+          decoding="async"
+          fetchPriority="high"
           alt="Cuia de chimarrão, celular com o app da BahCar e um carro com os faróis acesos à noite"
           className="w-full h-auto block"
           loading="eager"

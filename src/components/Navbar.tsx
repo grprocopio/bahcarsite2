@@ -32,7 +32,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-[background-color,border-color,padding] duration-300 border-b ${
-        isScrolled ? 'py-2.5 bg-erva/95 backdrop-blur-sm border-white/10' : 'py-5 sm:py-6 bg-transparent border-transparent'
+        isScrolled ? 'py-2.5 bg-erva/95 border-white/10' : 'py-5 sm:py-6 bg-transparent border-transparent'
       }`}
     >
       <div className="flex justify-center px-5">

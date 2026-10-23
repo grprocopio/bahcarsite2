@@ -11,6 +11,7 @@ import { LaunchModal } from './components/LaunchModal';
 import { PrivacyModal } from './components/PrivacyModal';
 import { ContactModal } from './components/ContactModal';
 import { useRevealOnScroll } from './hooks/useReveal';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
 
 export default function App() {
   const [partnerModalOpen, setPartnerModalOpen] = useState(false);
@@ -19,6 +20,7 @@ export default function App() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
   useRevealOnScroll();
+  useSmoothScroll();
 
   return (
     <div className="min-h-screen bg-erva text-white relative">
