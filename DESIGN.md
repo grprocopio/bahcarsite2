@@ -50,6 +50,6 @@ Erva (hero com a foto inteira) → Papel (manifesto) → **Lima (comissão)** �
 2. Quase nada brilha: só um brilho leve no "se mover diferente." da chamada final, como na versão anterior.
 3. A foto do hero aparece inteira (cuia, celular e carro). Logo centralizada no topo, sem botões na hero.
 4. Movimento conforme a rolagem (pedido do cliente): `useRevealOnScroll` + atributos `data-reveal` (`up`, `left`, `scale`, `wipe`, `linhas`, `cascata`, `barras`). Tudo desligado com "reduzir movimento".
-5. Modalidades com cara de tecnologia: pílula deslizante nas abas, visor com marcas de canto, varredura com linha lima na troca de foto e avanço automático com barra de progresso (pausa com mouse/foco e para quando a pessoa escolhe).
+5. Modalidades em vitrine presa na tela: a rolagem vertical passa pelas 4 categorias na horizontal, uma por tela, com pausa em cada uma. Foto grande com leve paralaxe, nome gigante em Kanit itálico, ficha e modelos em texto corrido. Barra de progresso e nomes clicáveis embaixo. Com "reduzir movimento", as categorias aparecem uma embaixo da outra.
 6. Manifesto preso na tela: a seção fica parada enquanto a frase acende palavra por palavra (com uma barra fina de progresso) e só depois a página continua. Só "nossa cidade" ganha marca-texto lima.
 7. Texto alinhado à esquerda; centro só em elementos pontuais, como a chamada final.
