@@ -65,7 +65,7 @@ export const Hero: React.FC<HeroProps> = () => {
           className="block w-full h-auto"
           loading="eager"
         />
-        <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-erva to-transparent" aria-hidden="true" />
+        <div className="absolute inset-x-0 top-0 h-[12%] bg-gradient-to-b from-erva to-transparent" aria-hidden="true" />
         <div className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-erva to-transparent" aria-hidden="true" />
       </div>
 
@@ -83,7 +83,7 @@ export const Hero: React.FC<HeroProps> = () => {
           className="absolute inset-0 w-full h-full object-cover object-bottom"
           loading="eager"
         />
-        <div className="absolute inset-x-0 top-0 h-[38%] bg-gradient-to-b from-erva to-transparent" aria-hidden="true" />
+        <div className="absolute inset-x-0 top-0 h-[22%] bg-gradient-to-b from-erva to-transparent" aria-hidden="true" />
         <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-erva to-transparent" aria-hidden="true" />
       </div>
     </section>
