@@ -1,6 +1,0 @@
-{
-  "summary": "Plano revisado com foco exclusivo na Sugestão 2:\n- Implementação de formulário de pré-cadastro funcional nos modais de Motorista Parceiro e de Passageiro\n- Campos de Nome e WhatsApp com formatação automática de telefone brasileiro\n- Validação rápida e tela de confirmação de sucesso sem recarregar a página\n- Persistência local (localStorage) para guardar o interesse do usuário\n- Preservação do design em vidro escuro e estilo da marca BahCar sem alterar o restante da landing page",
-  "updatedAt": "2026-10-16T14:19:55.210415561Z",
-  "requestFeedback": true,
-  "userFacing": true
-}

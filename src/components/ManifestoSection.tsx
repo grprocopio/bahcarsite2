@@ -12,7 +12,7 @@ const TRECHOS: { texto: string; destaque?: boolean }[] = [
 ];
 
 // Fração da rolagem usada para acender as palavras; o resto segura a frase completa antes de soltar
-const FRACAO_PALAVRAS = 0.8;
+const FRACAO_PALAVRAS = 0.85;
 
 export const ManifestoSection: React.FC = () => {
   const secaoRef = useRef<HTMLElement>(null);
@@ -97,7 +97,7 @@ export const ManifestoSection: React.FC = () => {
     <section
       ref={secaoRef}
       id="manifesto"
-      className={`relative w-full bg-papel text-erva ${reduz ? '' : 'h-[260vh] sm:h-[240vh]'}`}
+      className={`relative w-full bg-papel text-erva ${reduz ? '' : 'h-[170vh] sm:h-[160vh]'}`}
     >
       <div className={`${reduz ? '' : 'sticky top-0 h-[100svh]'} flex items-center`}>
         <div className="w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24">

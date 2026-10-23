@@ -46,9 +46,9 @@ Erva (hero com a foto inteira) → Papel (manifesto) → **Lima (comissão)** �
 
 ## Princípios
 
-1. Ousadia em um lugar só: a seção de comissão em lima chapado, com as barras de ganho comparando 84% e 65%.
+1. Seção de comissão em lima chapado: barras de ganho (84% x 65%) que enchem em sequência ao entrar na tela e o valor "a mais no seu bolso" gigante, com dígitos em odômetro.
 2. Quase nada brilha: só um brilho leve no "se mover diferente." da chamada final, como na versão anterior.
-3. A foto do hero aparece inteira (cuia, celular e carro). Logo centralizada no topo, sem botões na hero.
+3. A foto do hero aparece inteira (cuia, celular e carro). Logo centralizada no topo, sem botões na hero; só um indicador discreto "Role" que some ao rolar.
 4. Movimento conforme a rolagem (pedido do cliente): `useRevealOnScroll` + atributos `data-reveal` (`up`, `left`, `scale`, `wipe`, `linhas`, `cascata`, `barras`). Tudo desligado com "reduzir movimento".
 5. Modalidades em vitrine presa na tela: a rolagem vertical passa pelas 4 categorias na horizontal, uma por tela, com pausa em cada uma. Texto numa coluna limpa à esquerda e foto à direita (no celular, foto em cima), sem nada sobreposto ao carro. Título "MODALIDADES" em Kanit 900 branco, caixa alta, fixo no topo enquanto as categorias passam. No celular, arrastar para o lado troca de categoria. Barra de progresso e nomes clicáveis embaixo.
 6. Manifesto preso na tela: a seção fica parada enquanto a frase acende palavra por palavra (com uma barra fina de progresso) e só depois a página continua. Só "nossa cidade" ganha marca-texto lima.

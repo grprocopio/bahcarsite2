@@ -402,6 +402,61 @@ body {
   outline-offset: 2px;
 }
 
+
+/* Odômetro: cada dígito é uma coluna 0–9 que desliza até o número certo */
+.odometro {
+  display: inline-flex;
+  align-items: flex-end;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.odometro-roda {
+  display: inline-block;
+  height: 1em;
+  line-height: 1;
+  overflow: hidden;
+  padding: 0 0.03em;
+  margin: 0 -0.03em;
+}
+.odometro-coluna {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.odometro-coluna > span {
+  display: block;
+  height: 1em;
+  line-height: 1;
+  text-align: center;
+}
+
+/* Indicador de rolagem da hero */
+.indicador-rolagem {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.indicador-rolagem.escondido {
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  pointer-events: none;
+}
+@keyframes desce {
+  0% { transform: translateY(-120%); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(220%); opacity: 0; }
+}
+.indicador-rolagem .trilha::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  width: 3px;
+  height: 10px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: var(--color-lima);
+  animation: desce 1.8s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {

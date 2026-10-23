@@ -55,7 +55,7 @@ const MODALITIES_LIST: ModalityItem[] = [
 
 const TOTAL = MODALITIES_LIST.length;
 const FOLGA = 0.05; // pausa extra no começo e no fim da seção
-const PAUSA = 0.3; // fração de cada trecho em que a tela fica parada (em cada ponta)
+const PAUSA = 0.2; // fração de cada trecho em que a tela fica parada (em cada ponta)
 
 const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const suave = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
@@ -216,7 +216,7 @@ export const Modalities: React.FC = () => {
   }
 
   return (
-    <section ref={secaoRef} id="modalidades" className="relative w-full bg-erva text-white" style={{ height: `${TOTAL * 110}vh` }}>
+    <section ref={secaoRef} id="modalidades" className="relative w-full bg-erva text-white" style={{ height: `${TOTAL * 90}vh` }}>
       <div
         className="sticky top-0 h-[100svh] overflow-hidden"
         // Arrastar para o lado troca de modalidade (celular e tablet)
@@ -276,7 +276,7 @@ export const Modalities: React.FC = () => {
                   onClick={() => irPara(i)}
                   aria-current={i === ativa ? 'true' : undefined}
                   className={`font-heading font-extrabold italic uppercase text-xs sm:text-base whitespace-nowrap transition-colors duration-300 cursor-pointer ${
-                    i === ativa ? 'text-lima' : 'text-white/45 hover:text-white'
+                    i === ativa ? 'text-lima' : 'text-white/65 hover:text-white'
                   }`}
                 >
                   {item.name}
