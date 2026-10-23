@@ -9,7 +9,7 @@ const LINHAS: React.ReactNode[] = [
   'Pessoas movem',
   'a cidade.',
   <>
-    A Bah <span className="text-lima">conecta.</span>
+    A Bah <span className="texto-contorno">conecta.</span>
   </>,
 ];
 

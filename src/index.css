@@ -101,6 +101,17 @@ body {
   line-height: 0.93;
 }
 
+/* Letra contornada (como na versão anterior): só o traço em lima, miolo vazado */
+.texto-contorno {
+  color: transparent;
+  -webkit-text-stroke: 2.5px var(--color-lima);
+  paint-order: stroke fill;
+  filter: drop-shadow(0 0 22px rgba(174, 232, 39, 0.35));
+}
+@media (max-width: 640px) {
+  .texto-contorno { -webkit-text-stroke-width: 1.75px; }
+}
+
 .numeros {
   font-variant-numeric: tabular-nums;
 }
