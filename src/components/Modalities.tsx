@@ -75,10 +75,10 @@ interface VitrineProps {
 /** Uma categoria: texto numa coluna limpa, foto ao lado (nada sobreposto ao carro) */
 const Vitrine: React.FC<VitrineProps> = ({ item, fotoRef, textoRef }) => (
   <div className="relative w-screen h-full shrink-0">
-    <div className="h-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-20 sm:pt-24 pb-24 sm:pb-28 flex flex-col justify-center lg:grid lg:grid-cols-12 lg:items-center gap-6 sm:gap-8 lg:gap-14">
+    <div className="h-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-36 sm:pt-44 lg:pt-36 pb-24 sm:pb-28 flex flex-col justify-center lg:grid lg:grid-cols-12 lg:items-center gap-5 sm:gap-8 lg:gap-14">
       {/* Foto: em cima no celular, à direita no computador */}
       <div className="lg:order-2 lg:col-span-7 shrink-0">
-        <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-erva-2">
+        <div className="relative h-[clamp(130px,28svh,250px)] lg:h-auto lg:aspect-[16/10] overflow-hidden rounded-xl bg-erva-2">
           <img
             ref={fotoRef}
             src={`/images/${item.image}-1376.webp`}
@@ -100,7 +100,7 @@ const Vitrine: React.FC<VitrineProps> = ({ item, fotoRef, textoRef }) => (
           {item.name}
         </h3>
         <p className="mt-3 font-heading font-semibold italic text-lg sm:text-2xl text-lima">{item.yearRule}</p>
-        <p className="mt-3 sm:mt-4 text-[0.95rem] sm:text-lg text-white/80 leading-relaxed max-w-md">{item.summary}</p>
+        <p className="mt-3 sm:mt-4 text-[0.95rem] sm:text-lg text-white/80 leading-relaxed max-w-md [@media(max-height:720px)_and_(max-width:1023px)]:hidden">{item.summary}</p>
 
         <ul className="mt-4 sm:mt-6 space-y-2 sm:space-y-3">
           {item.highlights.map((h) => (
@@ -215,7 +215,16 @@ export const Modalities: React.FC = () => {
   return (
     <section ref={secaoRef} id="modalidades" className="relative w-full bg-erva text-white" style={{ height: `${TOTAL * 110}vh` }}>
       <div className="sticky top-0 h-[100svh] overflow-hidden">
-        <h2 className="sr-only">Modalidades</h2>
+        {/* Título fixo da seção: fica parado enquanto as categorias passam */}
+        <div className="absolute top-0 inset-x-0 z-10 pointer-events-none">
+          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-[4.75rem] sm:pt-24">
+            <h2 data-reveal="linhas" className="titulo-impacto texto-contorno text-[clamp(2.1rem,8.5vw,2.8rem)] lg:text-[clamp(3rem,5vw,4.75rem)]">
+              <span className="linha">
+                <span>Modalidades</span>
+              </span>
+            </h2>
+          </div>
+        </div>
 
         {/* Trilho horizontal com as 4 categorias */}
         <div ref={trilhoRef} className="flex h-full will-change-transform">
