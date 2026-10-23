@@ -53,18 +53,22 @@ export const Hero: React.FC<HeroProps> = () => {
         </h1>
       </div>
 
-      {/* Celular e tablet: a foto preenche a primeira tela inteira, com o foco na cuia e no celular */}
-      <div className="lg:hidden absolute inset-0 hero-foto">
+      {/* Celular e tablet: a foto aparece inteira (cuia, celular e carro) na base da tela;
+          o espaço de cima é preenchido pela própria foto ampliada e desfocada, como continuação do céu */}
+      <div className="lg:hidden absolute inset-0 hero-foto" aria-hidden="true">
+        <img src="/hero-rua-fundo.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
+      </div>
+      <div className="lg:hidden absolute inset-x-0 bottom-0 hero-foto">
         <img
           src="/hero-rua-1920.webp"
           srcSet="/hero-rua-1920.webp 1920w, /hero-rua-2912.webp 2912w"
-          sizes="300vw"
+          sizes="100vw"
           alt="Cuia de chimarrão e celular com o app da BahCar sobre um carro, numa rua de paralelepípedo ao anoitecer, com um Onix estacionado"
           width={2912}
           height={1640}
           decoding="async"
           fetchPriority="high"
-          className="absolute inset-0 w-full h-full object-cover object-[20%_center]"
+          className="block w-full h-auto [mask-image:linear-gradient(to_bottom,transparent,#000_14%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,#000_14%)]"
           loading="eager"
         />
       </div>
