@@ -58,8 +58,8 @@ export const Hero: React.FC<HeroProps> = () => {
         <img
           src="/hero-rua-mobile.webp"
           alt="Cuia de chimarrão e celular com o app da BahCar sobre um carro, numa rua de paralelepípedo ao anoitecer, com um Onix estacionado"
-          width={1080}
-          height={706}
+          width={1440}
+          height={941}
           decoding="async"
           fetchPriority="high"
           className="block w-full h-auto"
