@@ -29,8 +29,8 @@ export const ComissaoMotorista: React.FC<ComissaoMotoristaProps> = () => {
   return (
     <section id="comissao-clara" className="sobre-lima relative w-full bg-lima text-erva">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32 grid lg:grid-cols-12 gap-12 lg:gap-10">
-        <div className="lg:col-span-5">
-          <h2 className="titulo titulo-largo text-[clamp(2.4rem,6vw,4.75rem)]">
+        <div className="lg:col-span-5" data-reveal="left">
+          <h2 className="titulo text-[clamp(2.6rem,6.4vw,5rem)]">
             Taxa fixa de 16%. O resto é seu.
           </h2>
           <p className="mt-5 text-lg text-erva/80 leading-relaxed max-w-[30rem]">
@@ -38,11 +38,11 @@ export const ComissaoMotorista: React.FC<ComissaoMotoristaProps> = () => {
           </p>
         </div>
 
-        <div className="lg:col-span-7 lg:pl-6">
+        <div className="lg:col-span-7 lg:pl-6" data-reveal="up" style={{ ['--d' as string]: 2 }}>
           <label htmlFor={sliderId} className="block text-base font-medium text-erva/80">
             Simule uma corrida de
           </label>
-          <output htmlFor={sliderId} className="numeros block titulo text-[clamp(3rem,8vw,5.5rem)] leading-none mt-1">
+          <output htmlFor={sliderId} className="kanit-num block text-[clamp(3.2rem,8.5vw,6rem)] leading-none mt-1">
             {brl(valor)}
           </output>
 
@@ -63,7 +63,7 @@ export const ComissaoMotorista: React.FC<ComissaoMotoristaProps> = () => {
             <span>{brl(MAX)}</span>
           </div>
 
-          <dl className="mt-10 space-y-6">
+          <dl className="mt-10 space-y-6" data-reveal="barras">
             {linhas.map((l) => (
               <div key={l.nome}>
                 <div className="flex items-baseline justify-between gap-4">
@@ -71,13 +71,13 @@ export const ComissaoMotorista: React.FC<ComissaoMotoristaProps> = () => {
                     <span className="font-semibold">{l.nome}</span>
                     <span className="text-erva/70">, {l.taxa}</span>
                   </dt>
-                  <dd className={`numeros text-2xl sm:text-3xl font-bold ${l.destaque ? '' : 'text-erva/60'}`}>
+                  <dd className={`kanit-num text-2xl sm:text-4xl ${l.destaque ? '' : 'text-erva/60'}`}>
                     {brl(l.liquido)}
                   </dd>
                 </div>
                 <div className="mt-2 h-4 sm:h-5 rounded-full bg-erva/10 overflow-hidden" aria-hidden="true">
                   <div
-                    className={`h-full rounded-full transition-[width] duration-300 ease-out ${
+                    className={`barra h-full rounded-full ${
                       l.destaque ? 'bg-erva' : 'bg-erva/35'
                     }`}
                     style={{ width: `${(l.liquido / valor) * 100}%` }}

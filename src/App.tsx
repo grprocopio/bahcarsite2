@@ -10,12 +10,15 @@ import { PartnerModal } from './components/PartnerModal';
 import { LaunchModal } from './components/LaunchModal';
 import { PrivacyModal } from './components/PrivacyModal';
 import { ContactModal } from './components/ContactModal';
+import { useRevealOnScroll } from './hooks/useReveal';
 
 export default function App() {
   const [partnerModalOpen, setPartnerModalOpen] = useState(false);
   const [launchModalOpen, setLaunchModalOpen] = useState(false);
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
+
+  useRevealOnScroll();
 
   return (
     <div className="min-h-screen bg-erva text-white relative">

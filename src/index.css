@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Archivo variável (largura 62–125, peso 100–900), servida localmente. Licença em /public/fonts/Archivo-OFL.txt */
+/* Fontes servidas localmente. Licenças em /public/fonts/*-OFL.txt */
 @font-face {
   font-family: 'Archivo';
   src: url('/fonts/archivo-var-latin.woff') format('woff');
@@ -9,10 +9,45 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Kanit';
+  src: url('/fonts/kanit-extrabold-latin.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Kanit';
+  src: url('/fonts/kanit-black-latin.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Kanit';
+  src: url('/fonts/kanit-semibolditalic-latin.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Kanit';
+  src: url('/fonts/kanit-extrabolditalic-latin.woff') format('woff');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Kanit';
+  src: url('/fonts/kanit-blackitalic-latin.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
 
 @theme {
   --font-sans: 'Archivo', ui-sans-serif, system-ui, sans-serif;
-  --font-heading: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Kanit', 'Archivo', ui-sans-serif, sans-serif;
   --font-mono: 'Archivo', ui-sans-serif, system-ui, sans-serif;
 
   --color-lima: #AEE827;
@@ -35,7 +70,6 @@ html {
 
 body {
   font-family: var(--font-sans);
-  font-stretch: 100%;
   background-color: var(--color-erva);
   color: #fff;
   overflow-x: hidden;
@@ -48,23 +82,34 @@ body {
   color: var(--color-erva);
 }
 
-/* Títulos: largura expandida é o recurso expressivo da marca */
+/* Títulos de seção: Kanit gordinha, em pé */
 .titulo {
   font-family: var(--font-heading);
-  font-stretch: 118%;
   font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.02;
+  letter-spacing: -0.01em;
+  line-height: 1;
   text-wrap: balance;
 }
 
-.titulo-largo {
-  font-stretch: 125%;
+/* Títulos de impacto (hero e chamada final): Kanit black itálico em caixa alta, como na versão anterior */
+.titulo-impacto {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  line-height: 0.93;
 }
 
 .numeros {
   font-variant-numeric: tabular-nums;
-  font-stretch: 112%;
+}
+
+.kanit-num {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-style: italic;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Foco visível e consistente */
@@ -78,45 +123,197 @@ body {
   outline-color: var(--color-erva);
 }
 
-/* Entrada do hero: o único momento de movimento não acionado pela pessoa */
-@keyframes hero-entra {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; }
+/* ===========================================================
+   Animações de entrada conforme a rolagem
+   Só ativas quando o JS liga a classe .reveal-on no <html>
+   (e nunca com "reduzir movimento" ligado).
+   =========================================================== */
+.reveal-on [data-reveal] {
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    opacity 0.7s var(--ease),
+    transform 0.9s var(--ease),
+    clip-path 1s var(--ease);
+  transition-delay: calc(var(--d, 0) * 90ms);
 }
 
+.reveal-on [data-reveal='up']:not(.is-in) {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.reveal-on [data-reveal='left']:not(.is-in) {
+  opacity: 0;
+  transform: translateX(-56px) skewX(-6deg);
+}
+
+.reveal-on [data-reveal='scale']:not(.is-in) {
+  opacity: 0;
+  transform: scale(0.94);
+}
+
+/* A máscara fica nos filhos: o observador precisa enxergar o elemento em si */
+.reveal-on [data-reveal='wipe'] > * {
+  transition: clip-path 1.1s cubic-bezier(0.7, 0, 0.2, 1), opacity 0.6s ease-out;
+  transition-delay: calc(var(--i, 0) * 120ms + var(--d, 0) * 90ms);
+}
+.reveal-on [data-reveal='wipe']:not(.is-in) > * {
+  clip-path: inset(0 100% 0 0);
+}
+.reveal-on [data-reveal='wipe']:not(.is-in) > :not(:first-child) {
+  clip-path: none;
+  opacity: 0;
+}
+.reveal-on [data-reveal='wipe'].is-in > * {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Títulos linha a linha: cada linha sobe de dentro de uma máscara */
+.linha {
+  display: block;
+  overflow: hidden;
+  padding: 0 0.12em 0.06em 0;
+  margin-bottom: -0.06em;
+}
+.linha > span {
+  display: inline-block;
+}
+.reveal-on [data-reveal='linhas'] .linha > span {
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 110ms + var(--d, 0) * 90ms);
+}
+.reveal-on [data-reveal='linhas']:not(.is-in) .linha > span {
+  transform: translateY(108%) skewY(5deg);
+}
+
+/* Filhos em cascata */
+.reveal-on [data-reveal='cascata'] > * {
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 80ms);
+}
+.reveal-on [data-reveal='cascata']:not(.is-in) > * {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* Barras do simulador enchem quando entram na tela */
+.barra {
+  transition: width 0.35s ease-out;
+}
+.reveal-on [data-reveal='barras'] .barra {
+  transition: width 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-on [data-reveal='barras']:not(.is-in) .barra {
+  width: 0 !important;
+}
+
+/* Foto do hero */
 @keyframes foto-entra {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.hero-texto > * {
-  animation: hero-entra 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-.hero-texto > *:nth-child(2) { animation-delay: 0.12s; }
-.hero-texto > *:nth-child(3) { animation-delay: 0.24s; }
-
-.hero-foto {
-  animation: foto-entra 1.1s ease-out 0.2s both;
-}
-
-/* Troca de modalidade: resposta à ação da pessoa */
-@keyframes modalidade-entra {
-  from { opacity: 0; transform: translateX(var(--desloca, 16px)); }
+  from { opacity: 0; transform: scale(1.04); }
   to { opacity: 1; transform: none; }
 }
-
-.modalidade-entra {
-  animation: modalidade-entra 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+.hero-foto {
+  animation: foto-entra 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
 }
 
 @keyframes aparece {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
 .animate-fadeIn {
   animation: aparece 0.2s ease-out both;
 }
+
+/* ===========================================================
+   Modalidades
+   =========================================================== */
+
+/* Imagem nova entra com uma varredura na direção da troca */
+@keyframes varre-direita {
+  from { clip-path: inset(0 0 0 100%); }
+  to { clip-path: inset(0 0 0 0); }
+}
+@keyframes varre-esquerda {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+@keyframes linha-varre-direita {
+  from { left: 100%; opacity: 1; }
+  90% { opacity: 1; }
+  to { left: 0%; opacity: 0; }
+}
+@keyframes linha-varre-esquerda {
+  from { left: 0%; opacity: 1; }
+  90% { opacity: 1; }
+  to { left: 100%; opacity: 0; }
+}
+@keyframes zoom-suave {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+
+.foto-entra-direita { animation: varre-direita 0.75s cubic-bezier(0.7, 0, 0.2, 1) both; }
+.foto-entra-esquerda { animation: varre-esquerda 0.75s cubic-bezier(0.7, 0, 0.2, 1) both; }
+.foto-entra-direita > img,
+.foto-entra-esquerda > img { animation: zoom-suave 1.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.linha-varredura-direita { animation: linha-varre-direita 0.75s cubic-bezier(0.7, 0, 0.2, 1) both; }
+.linha-varredura-esquerda { animation: linha-varre-esquerda 0.75s cubic-bezier(0.7, 0, 0.2, 1) both; }
+
+/* Texto da modalidade entra em cascata a cada troca */
+@keyframes entra-dados {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.dados-entram > * {
+  animation: entra-dados 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 70ms + 120ms);
+}
+
+.entra-modelo {
+  animation: entra-dados 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 45ms + 380ms);
+}
+
+@keyframes nome-entra {
+  from { opacity: 0; transform: translateX(-40px) skewX(-8deg); }
+  to { opacity: 1; transform: none; }
+}
+.nome-entra {
+  animation: nome-entra 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Barra de progresso do avanço automático */
+@keyframes progresso {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.progresso {
+  transform-origin: left;
+  animation: progresso var(--duracao, 7s) linear both;
+}
+.progresso.pausado {
+  animation-play-state: paused;
+}
+
+/* Marcas de canto do visor */
+.visor::before,
+.visor::after,
+.visor > .canto-a,
+.visor > .canto-b {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--color-lima);
+  z-index: 3;
+  pointer-events: none;
+}
+.visor::before { top: 10px; left: 10px; border-top: 3px solid; border-left: 3px solid; }
+.visor::after { top: 10px; right: 10px; border-top: 3px solid; border-right: 3px solid; }
+.visor > .canto-a { bottom: 10px; left: 10px; border-bottom: 3px solid; border-left: 3px solid; }
+.visor > .canto-b { bottom: 10px; right: 10px; border-bottom: 3px solid; border-right: 3px solid; }
 
 /* Slider do simulador */
 .slider-corrida {
@@ -127,25 +324,21 @@ body {
   background: transparent;
   cursor: pointer;
 }
-
 .slider-corrida::-webkit-slider-runnable-track {
   height: 6px;
   border-radius: 3px;
   background: linear-gradient(to right, var(--color-erva) var(--preenche), rgba(17, 23, 12, 0.18) var(--preenche));
 }
-
 .slider-corrida::-moz-range-track {
   height: 6px;
   border-radius: 3px;
   background: rgba(17, 23, 12, 0.18);
 }
-
 .slider-corrida::-moz-range-progress {
   height: 6px;
   border-radius: 3px;
   background: var(--color-erva);
 }
-
 .slider-corrida::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 28px;
@@ -155,8 +348,11 @@ body {
   background: var(--color-erva);
   border: 4px solid var(--color-lima);
   box-shadow: 0 0 0 2px var(--color-erva);
+  transition: transform 0.15s;
 }
-
+.slider-corrida:active::-webkit-slider-thumb {
+  transform: scale(1.15);
+}
 .slider-corrida::-moz-range-thumb {
   width: 20px;
   height: 20px;
@@ -165,7 +361,6 @@ body {
   border: 4px solid var(--color-lima);
   box-shadow: 0 0 0 2px var(--color-erva);
 }
-
 .slider-corrida:focus-visible {
   outline: 3px solid var(--color-erva);
   outline-offset: 2px;
@@ -177,5 +372,6 @@ body {
     animation-duration: 0.01ms !important;
     animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
   }
 }

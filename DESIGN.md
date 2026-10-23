@@ -33,18 +33,22 @@ A identidade vem da própria marca: o logo é um "bah" geométrico e gordinho, v
 
 ## Tipografia
 
-Uma família só: **Archivo** (variável, eixos de largura e peso), servida localmente em `public/fonts/`.
-O contraste vem do eixo de largura: títulos expandidos (`wdth` 112–125, peso 800), texto em largura normal (`wdth` 100, peso 400–500).
-Títulos em caixa normal (sentence case), sem itálico, sem palavra destacada.
+Duas famílias, servidas localmente em `public/fonts/`:
+
+- **Kanit** (títulos): pedido do cliente, a fonte "gordinha" da versão anterior.
+  - `.titulo-impacto`: Kanit 900 itálico em caixa alta, para a hero, a chamada final e o nome da modalidade.
+  - `.titulo`: Kanit 800 em pé, em caixa normal, para os demais títulos de seção.
+- **Archivo** (texto corrido, rótulos e botões secundários).
 
 ## Ritmo das seções
 
-Erva (hero com a foto inteira) → Papel (manifesto) → **Lima (comissão: o elemento memorável)** → Erva (modalidades, fotos noturnas) → Papel (chamada final) → Erva (rodapé).
+Erva (hero com a foto inteira) → Papel (manifesto) → **Lima (comissão)** → Erva (modalidades, fotos noturnas) → Erva (chamada final, como na versão anterior) → Erva (rodapé, com ícones de Instagram e WhatsApp).
 
 ## Princípios
 
 1. Ousadia em um lugar só: a seção de comissão em lima chapado, com as barras de ganho comparando 84% e 65%.
-2. Nada brilha. Sem glow, sem contorno neon, sem vidro.
-3. A foto do hero aparece inteira (cuia, celular e carro), sem texto por cima no desktop.
-4. Movimento só na entrada do hero e em resposta à ação da pessoa (slider, abas, modais).
+2. Quase nada brilha: só um brilho leve no "se mover diferente." da chamada final, como na versão anterior.
+3. A foto do hero aparece inteira (cuia, celular e carro). Logo centralizada no topo, sem botões na hero.
+4. Movimento conforme a rolagem (pedido do cliente): `useRevealOnScroll` + atributos `data-reveal` (`up`, `left`, `scale`, `wipe`, `linhas`, `cascata`, `barras`). Tudo desligado com "reduzir movimento".
+6. Modalidades com cara de tecnologia: pílula deslizante nas abas, visor com marcas de canto, varredura com linha lima na troca de foto e avanço automático com barra de progresso (pausa com mouse/foco e para quando a pessoa escolhe).
 5. Texto alinhado à esquerda; centro só em elementos pontuais.
