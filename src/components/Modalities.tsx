@@ -75,10 +75,10 @@ interface VitrineProps {
 /** Uma categoria: texto numa coluna limpa, foto ao lado (nada sobreposto ao carro) */
 const Vitrine: React.FC<VitrineProps> = ({ item, fotoRef, textoRef }) => (
   <div className="relative w-screen h-full shrink-0">
-    <div className="h-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-36 sm:pt-44 lg:pt-36 pb-24 sm:pb-28 flex flex-col justify-center lg:grid lg:grid-cols-12 lg:items-center gap-5 sm:gap-8 lg:gap-14">
+    <div className="h-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-40 sm:pt-48 lg:pt-40 pb-24 sm:pb-28 flex flex-col justify-center lg:grid lg:grid-cols-12 lg:items-center gap-5 sm:gap-8 lg:gap-14">
       {/* Foto: em cima no celular, à direita no computador */}
       <div className="lg:order-2 lg:col-span-7 shrink-0">
-        <div className="relative h-[clamp(130px,28svh,250px)] lg:h-auto lg:aspect-[16/10] overflow-hidden rounded-xl bg-erva-2">
+        <div className="relative h-[clamp(120px,25svh,250px)] lg:h-auto lg:aspect-[16/10] overflow-hidden rounded-xl bg-erva-2">
           <img
             ref={fotoRef}
             src={`/images/${item.image}-1376.webp`}
@@ -131,6 +131,8 @@ export const Modalities: React.FC = () => {
   const fotos = useRef<(HTMLImageElement | null)[]>([]);
   const textos = useRef<(HTMLDivElement | null)[]>([]);
   const [ativa, setAtiva] = useState(0);
+  const ativaRef = useRef(0);
+  const toque = useRef<{ x: number; y: number } | null>(null);
   const [reduz, setReduz] = useState(false);
 
   // A animação escreve direto no estilo dos elementos (sem re-renderizar o React a cada quadro)
@@ -170,6 +172,7 @@ export const Modalities: React.FC = () => {
       const nova = Math.round(pos);
       if (nova !== ultimaAtiva) {
         ultimaAtiva = nova;
+        ativaRef.current = nova;
         setAtiva(nova);
       }
     };
@@ -214,11 +217,29 @@ export const Modalities: React.FC = () => {
 
   return (
     <section ref={secaoRef} id="modalidades" className="relative w-full bg-erva text-white" style={{ height: `${TOTAL * 110}vh` }}>
-      <div className="sticky top-0 h-[100svh] overflow-hidden">
+      <div
+        className="sticky top-0 h-[100svh] overflow-hidden"
+        // Arrastar para o lado troca de modalidade (celular e tablet)
+        onTouchStart={(e) => {
+          const t = e.touches[0];
+          toque.current = { x: t.clientX, y: t.clientY };
+        }}
+        onTouchEnd={(e) => {
+          const inicio = toque.current;
+          toque.current = null;
+          if (!inicio) return;
+          const t = e.changedTouches[0];
+          const dx = t.clientX - inicio.x;
+          const dy = t.clientY - inicio.y;
+          if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy) * 1.3) return;
+          const proxima = Math.min(TOTAL - 1, Math.max(0, ativaRef.current + (dx < 0 ? 1 : -1)));
+          if (proxima !== ativaRef.current) irPara(proxima);
+        }}
+      >
         {/* Título fixo da seção: fica parado enquanto as categorias passam */}
         <div className="absolute top-0 inset-x-0 z-10 pointer-events-none">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-[4.75rem] sm:pt-24">
-            <h2 data-reveal="linhas" className="titulo-impacto texto-contorno text-[clamp(2.1rem,8.5vw,2.8rem)] lg:text-[clamp(3rem,5vw,4.75rem)]">
+            <h2 data-reveal="linhas" className="titulo text-white text-[clamp(2.6rem,11vw,3.4rem)] lg:text-[clamp(3.6rem,6vw,5.75rem)]" style={{ fontWeight: 900 }}>
               <span className="linha">
                 <span>Modalidades</span>
               </span>
