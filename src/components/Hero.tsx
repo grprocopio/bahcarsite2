@@ -24,7 +24,7 @@ const IndicadorRolagem: React.FC = () => {
   }, []);
   return (
     <div
-      className={`indicador-rolagem hidden lg:flex fixed left-1/2 -translate-x-1/2 bottom-7 z-40 items-center gap-2.5 text-sm text-white/80 pointer-events-none ${
+      className={`indicador-rolagem fixed left-1/2 -translate-x-1/2 bottom-5 sm:bottom-7 z-40 flex items-center gap-2.5 text-sm text-white/80 pointer-events-none ${
         visivel ? '' : 'escondido'
       }`}
       aria-hidden="true"
@@ -37,13 +37,13 @@ const IndicadorRolagem: React.FC = () => {
 
 export const Hero: React.FC<HeroProps> = () => {
   return (
-    <section id="hero" className="relative w-full bg-erva overflow-hidden lg:min-h-[100svh]">
+    <section id="hero" className="relative w-full bg-erva overflow-hidden flex flex-col min-h-[100svh] lg:block lg:min-h-0">
       <IndicadorRolagem />
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-28 sm:pt-36 lg:pt-28">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-32 sm:pt-36 lg:pt-44">
         <h1
           data-reveal="linhas"
           style={{ ['--d' as string]: 2 }}
-          className="titulo-impacto text-[clamp(2.5rem,10vw,7rem)] lg:text-[clamp(3.6rem,5.6vw,6.25rem)] text-white"
+          className="titulo-impacto text-[clamp(2.5rem,10vw,7rem)] text-white"
         >
           {LINHAS.map((linha, i) => (
             <span key={i} className="linha">
@@ -53,38 +53,29 @@ export const Hero: React.FC<HeroProps> = () => {
         </h1>
       </div>
 
-      {/* Celular e tablet: a cena inteira (cuia, celular e carro) em formato horizontal, sem recorte forçado */}
-      <div className="lg:hidden relative mt-6 sm:mt-8 hero-foto">
-        <img
-          src="/hero-rua-mobile.webp"
-          alt="Cuia de chimarrão e celular com o app da BahCar sobre um carro, numa rua de paralelepípedo ao anoitecer, com um Onix estacionado"
-          width={1440}
-          height={941}
-          decoding="async"
-          fetchPriority="high"
-          className="block w-full h-auto"
-          loading="eager"
-        />
-        <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-erva to-transparent" aria-hidden="true" />
-        <div className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-erva to-transparent" aria-hidden="true" />
+      {/* Mobile: recorte da foto vertical mostrando cuia, celular e carro */}
+      <div className="lg:hidden relative -mt-6 flex-1 min-h-[110vw] hero-foto" aria-hidden="true">
+        <img src="/hero-mobile-1080.webp" alt="" width={1080} height={2340} decoding="async" fetchPriority="high" className="absolute inset-0 w-full h-full object-cover object-[50%_82%]" loading="eager" />
+        <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-erva to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-erva to-transparent" />
       </div>
 
-      {/* Desktop: a foto ocupa a tela inteira; o título fica sobre o céu */}
-      <div className="hidden lg:block absolute inset-x-0 bottom-0 top-[24%] hero-foto">
+      {/* Desktop: a foto aparece inteira — cuia, celular e carro — logo abaixo do título */}
+      <div className="hidden lg:block relative -mt-[14vw] hero-foto">
         <img
-          src="/hero-rua-1671.webp"
-          srcSet="/hero-rua-1200.webp 1200w, /hero-rua-1671.webp 1671w"
+          src="/carromate-1920.webp"
+          srcSet="/carromate-1920.webp 1920w, /carromate-2752.webp 2752w"
           sizes="100vw"
-          width={1671}
-          height={941}
+          width={1920}
+          height={1072}
           decoding="async"
           fetchPriority="high"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover object-bottom"
+          alt="Cuia de chimarrão, celular com o app da BahCar e um carro com os faróis acesos à noite"
+          className="w-full h-auto block"
           loading="eager"
         />
-        <div className="absolute inset-x-0 top-0 h-[38%] bg-gradient-to-b from-erva to-transparent" aria-hidden="true" />
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-erva to-transparent" aria-hidden="true" />
+        <div className="absolute inset-x-0 top-0 h-[35%] bg-gradient-to-b from-erva to-transparent" aria-hidden="true" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-erva to-transparent" aria-hidden="true" />
       </div>
     </section>
   );
