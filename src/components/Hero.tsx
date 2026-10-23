@@ -37,7 +37,7 @@ const IndicadorRolagem: React.FC = () => {
 
 export const Hero: React.FC<HeroProps> = () => {
   return (
-    <section id="hero" className="relative w-full bg-erva overflow-hidden lg:min-h-[100svh]">
+    <section id="hero" className="relative w-full bg-erva overflow-hidden min-h-[100svh]">
       <IndicadorRolagem />
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-28 sm:pt-36 lg:pt-28">
         <h1
@@ -53,16 +53,18 @@ export const Hero: React.FC<HeroProps> = () => {
         </h1>
       </div>
 
-      {/* Celular e tablet: a cena inteira (cuia, celular e carro) em formato horizontal, sem recorte forçado */}
-      <div className="lg:hidden relative mt-6 sm:mt-8 hero-foto">
+      {/* Celular e tablet: a foto preenche a primeira tela inteira, com o foco na cuia e no celular */}
+      <div className="lg:hidden absolute inset-0 hero-foto">
         <img
-          src="/hero-rua-mobile.webp"
+          src="/hero-rua-1920.webp"
+          srcSet="/hero-rua-1920.webp 1920w, /hero-rua-2912.webp 2912w"
+          sizes="300vw"
           alt="Cuia de chimarrão e celular com o app da BahCar sobre um carro, numa rua de paralelepípedo ao anoitecer, com um Onix estacionado"
-          width={1440}
-          height={960}
+          width={2912}
+          height={1640}
           decoding="async"
           fetchPriority="high"
-          className="block w-full h-auto"
+          className="absolute inset-0 w-full h-full object-cover object-[20%_center]"
           loading="eager"
         />
       </div>
