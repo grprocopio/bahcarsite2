@@ -22,10 +22,10 @@ export const BahCarLogo: React.FC<BahCarLogoProps> = ({
       <img
         src="/bahcar-logo-white.png?v=2"
         alt="BahCar"
-        className={`${sizeClasses[size]} w-auto object-contain drop-shadow-[0_2px_10px_rgba(184,255,0,0.18)]`}
+        className={`${sizeClasses[size]} w-auto object-contain `}
       />
       {showBadge && (
-        <span className="text-[10px] uppercase font-mono tracking-widest px-2 py-0.5 rounded bg-[#B8FF00]/10 text-[#B8FF00] border border-[#B8FF00]/30">
+        <span className="text-[10px] uppercase font-mono tracking-widest px-2 py-0.5 rounded bg-lima/10 text-lima border border-lima/30">
           SM
         </span>
       )}

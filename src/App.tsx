@@ -18,13 +18,16 @@ export default function App() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#050608] text-white selection:bg-[#B8FF00] selection:text-black relative">
+    <div className="min-h-screen bg-erva text-white relative">
       {/* Navbar Oficial */}
       <Navbar onOpenPartner={() => setPartnerModalOpen(true)} />
 
-      <main className="relative z-10 bg-[#050608]">
+      <main className="relative z-10">
         {/* Hero Oficial com vídeo e canplaythrough */}
-        <Hero />
+        <Hero
+          onOpenPartner={() => setPartnerModalOpen(true)}
+          onOpenLaunch={() => setLaunchModalOpen(true)}
+        />
 
         {/* Frase Manifesto no estilo de título (depois do vídeo e antes da taxa) */}
         <ManifestoSection />

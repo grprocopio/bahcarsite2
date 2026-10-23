@@ -1,5 +1,4 @@
 import React from 'react';
-import { useScrollReveal } from '../hooks/useScrollPosition';
 
 interface FinalCtaProps {
   onOpenLaunch: () => void;
@@ -7,53 +6,34 @@ interface FinalCtaProps {
 }
 
 export const FinalCta: React.FC<FinalCtaProps> = ({ onOpenLaunch, onOpenPartner }) => {
-  const [contentRef, isVisible] = useScrollReveal<HTMLDivElement>({ threshold: 0.04 });
-
   return (
-    <section
-      id="final-cta"
-      className="relative w-full py-24 sm:py-32 lg:py-40 bg-[#050608] text-white flex items-center justify-center overflow-hidden"
-    >
-      <div
-        ref={contentRef}
-        className={`relative z-10 max-w-4xl mx-auto px-6 sm:px-8 text-center flex flex-col items-center scroll-reveal ${
-          isVisible ? 'is-revealed' : ''
-        }`}
-      >
-        {/* Título Principal */}
-        <h2
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl italic font-black uppercase tracking-[0.02em] leading-[0.98] text-balance text-white"
-          style={{ fontFamily: "'Kanit', 'Saira', sans-serif", fontWeight: 900 }}
-        >
-          <span>SANTA MARIA VAI</span> <br />
-          <span className="text-[#B8FF00] drop-shadow-[0_0_35px_rgba(184,255,0,0.4)] inline-block mt-2">
-            SE MOVER DIFERENTE.
-          </span>
+    <section id="final-cta" className="relative w-full bg-papel text-erva">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-36 grid lg:grid-cols-12 gap-10 lg:gap-12 lg:items-end">
+        <h2 className="lg:col-span-7 titulo titulo-largo text-[clamp(2.4rem,6.5vw,5.25rem)]">
+          Santa Maria vai se mover diferente.
         </h2>
 
-        <p className="mt-5 sm:mt-6 text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl mx-auto">
-          Um ecossistema local feito para valorizar de verdade quem dirige e oferecer aos passageiros a resposta mais rápida e segura de Santa Maria.
-        </p>
+        <div className="lg:col-span-5">
+          <p className="text-lg text-pedra leading-relaxed max-w-[30rem]">
+            Um app local, feito para valorizar de verdade quem dirige e oferecer aos passageiros a resposta mais rápida e
+            segura de Santa Maria.
+          </p>
 
-        {/* Botões de Ação: Motorista e Passageiro */}
-        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
-          <button
-            onClick={onOpenPartner}
-            className="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-9 py-4 text-sm sm:text-base font-black italic uppercase tracking-wider text-black bg-[#B8FF00] hover:bg-[#caff33] rounded-2xl transition-all duration-200 shadow-[0_0_25px_rgba(184,255,0,0.35)] hover:shadow-[0_0_35px_rgba(184,255,0,0.55)] hover:scale-105 active:scale-95 cursor-pointer"
-            style={{ fontFamily: "'Kanit', sans-serif" }}
-          >
-            <span>QUERO SER MOTORISTA</span>
-          </button>
-
-          <button
-            onClick={onOpenLaunch}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-9 py-4 text-sm sm:text-base font-bold italic uppercase tracking-wider text-white hover:text-[#B8FF00] bg-[#0d0f17]/85 backdrop-blur-md border border-white/15 hover:border-[#B8FF00]/50 rounded-2xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
-            style={{ fontFamily: "'Kanit', sans-serif" }}
-          >
-            <span>QUERO SER PASSAGEIRO</span>
-          </button>
+          <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={onOpenPartner}
+              className="rounded-full bg-erva text-lima px-7 py-3.5 text-base font-semibold hover:bg-erva-2 transition-colors cursor-pointer"
+            >
+              Quero ser motorista
+            </button>
+            <button
+              onClick={onOpenLaunch}
+              className="rounded-full border border-erva/30 text-erva px-7 py-3.5 text-base font-semibold hover:bg-erva/5 transition-colors cursor-pointer"
+            >
+              Quero ser passageiro
+            </button>
+          </div>
         </div>
-
       </div>
     </section>
   );
