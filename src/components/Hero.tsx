@@ -24,7 +24,7 @@ const IndicadorRolagem: React.FC = () => {
   }, []);
   return (
     <div
-      className={`indicador-rolagem fixed left-1/2 -translate-x-1/2 bottom-5 sm:bottom-7 z-40 flex items-center gap-2.5 text-sm text-white/80 pointer-events-none ${
+      className={`indicador-rolagem hidden lg:flex fixed left-1/2 -translate-x-1/2 bottom-7 z-40 items-center gap-2.5 text-sm text-white/80 pointer-events-none ${
         visivel ? '' : 'escondido'
       }`}
       aria-hidden="true"
@@ -37,9 +37,9 @@ const IndicadorRolagem: React.FC = () => {
 
 export const Hero: React.FC<HeroProps> = () => {
   return (
-    <section id="hero" className="relative w-full bg-erva overflow-hidden flex flex-col min-h-[100svh] lg:block">
+    <section id="hero" className="relative w-full bg-erva overflow-hidden lg:min-h-[100svh]">
       <IndicadorRolagem />
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-32 sm:pt-36 lg:pt-28">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-28 sm:pt-36 lg:pt-28">
         <h1
           data-reveal="linhas"
           style={{ ['--d' as string]: 2 }}
@@ -53,11 +53,20 @@ export const Hero: React.FC<HeroProps> = () => {
         </h1>
       </div>
 
-      {/* Mobile: recorte da foto com a cuia, o celular e a rua */}
-      <div className="lg:hidden relative -mt-6 flex-1 min-h-[110vw] hero-foto" aria-hidden="true">
-        <img src="/hero-rua-mobile.webp" alt="" width={740} height={941} decoding="async" fetchPriority="high" className="absolute inset-0 w-full h-full object-cover object-bottom" loading="eager" />
-        <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-erva to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-erva to-transparent" />
+      {/* Celular e tablet: a cena inteira (cuia, celular e carro) em formato horizontal, sem recorte forçado */}
+      <div className="lg:hidden relative mt-6 sm:mt-8 hero-foto">
+        <img
+          src="/hero-rua-mobile.webp"
+          alt="Cuia de chimarrão e celular com o app da BahCar sobre um carro, numa rua de paralelepípedo ao anoitecer, com um Onix estacionado"
+          width={1080}
+          height={706}
+          decoding="async"
+          fetchPriority="high"
+          className="block w-full h-auto"
+          loading="eager"
+        />
+        <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-erva to-transparent" aria-hidden="true" />
+        <div className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-erva to-transparent" aria-hidden="true" />
       </div>
 
       {/* Desktop: a foto ocupa a tela inteira; o título fica sobre o céu */}
@@ -70,7 +79,7 @@ export const Hero: React.FC<HeroProps> = () => {
           height={941}
           decoding="async"
           fetchPriority="high"
-          alt="Cuia de chimarrão e celular com o app da BahCar sobre um carro, numa rua de paralelepípedo ao anoitecer, com um Onix estacionado"
+          alt=""
           className="absolute inset-0 w-full h-full object-cover object-bottom"
           loading="eager"
         />
