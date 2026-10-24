@@ -42,13 +42,13 @@ Duas famílias, servidas localmente em `public/fonts/`:
 
 ## Ritmo das seções
 
-Erva (hero com a foto da rua) → Papel (manifesto) → **Lima (comissão)** → Erva (modalidades, fotos noturnas) → Erva (chamada final, como na versão anterior) → Erva (rodapé, com ícones de Instagram e WhatsApp).
+Erva (hero com a foto da equipe, escurecida) → Papel (manifesto) → **Lima (comissão)** → Erva (modalidades, fotos noturnas) → Erva (chamada final, como na versão anterior) → Erva (rodapé, com ícones de Instagram e WhatsApp).
 
 ## Princípios
 
 1. Seção de comissão em lima chapado: barras de ganho (84% x 65%) que enchem em sequência ao entrar na tela e o valor "a mais no seu bolso" gigante, com dígitos em odômetro.
 2. Quase nada brilha: só um brilho leve no "se mover diferente." da chamada final, como na versão anterior.
-3. Hero com foto realista em alta (2912 px) de rua de paralelepípedo ao anoitecer: cuia com a logo da BahCar como veio na foto, celular com o app e Onix preto ao fundo (emblema do carro com o verde suavizado; texto embaralhado do celular corrigido). No computador, a foto horizontal ocupa a tela inteira; no celular, uma versão vertical (9:16) da mesma cena ocupa a primeira tela. Logo centralizada no topo, sem botões na hero; só um indicador discreto "Role" que some ao rolar.
+3. Hero com a foto real da equipe da BahCar (camisetas verdes, bosque de pinheiros) em tela cheia, sem os textos que vinham na arte, com uma camada preta a 55% por cima para baixar a exposição e dar leitura ao título. Logo centralizada no topo, sem botões na hero; só um indicador discreto "Role" que some ao rolar.
 4. Movimento conforme a rolagem (pedido do cliente): `useRevealOnScroll` + atributos `data-reveal` (`up`, `left`, `scale`, `wipe`, `linhas`, `cascata`, `barras`). Tudo desligado com "reduzir movimento".
 5. Modalidades em vitrine presa na tela: a rolagem vertical passa pelas 4 categorias na horizontal, uma por tela, com pausa em cada uma. Texto numa coluna limpa à esquerda e foto à direita (no celular, foto em cima), sem nada sobreposto ao carro. Título "MODALIDADES" em Kanit 900 branco, caixa alta, fixo no topo enquanto as categorias passam. No celular, arrastar para o lado troca de categoria. Barra de progresso e nomes clicáveis embaixo.
 6. Manifesto preso na tela: a seção fica parada enquanto a frase acende palavra por palavra (com uma barra fina de progresso) e só depois a página continua. Só "nossa cidade" ganha marca-texto lima.

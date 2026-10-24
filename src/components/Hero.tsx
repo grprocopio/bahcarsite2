@@ -38,12 +38,29 @@ const IndicadorRolagem: React.FC = () => {
 export const Hero: React.FC<HeroProps> = () => {
   return (
     <section id="hero" className="relative w-full bg-erva overflow-hidden min-h-[100svh]">
+      {/* Foto da equipe em tela cheia, com uma camada preta por cima que baixa a exposição */}
+      <div className="absolute inset-0 hero-foto">
+        <img
+          src="/hero-equipe-1600.webp"
+          srcSet="/hero-equipe-1000.webp 1000w, /hero-equipe-1600.webp 1600w, /hero-equipe-2400.webp 2400w"
+          sizes="(min-width: 1024px) 100vw, 400vw"
+          alt="Equipe da BahCar com camisetas verdes da marca, num bosque de pinheiros"
+          width={2400}
+          height={1340}
+          decoding="async"
+          fetchPriority="high"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-black/55" aria-hidden="true" />
+      </div>
+
       <IndicadorRolagem />
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-28 sm:pt-36 lg:pt-28">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-28 sm:pt-32 lg:pt-24">
         <h1
           data-reveal="linhas"
           style={{ ['--d' as string]: 2 }}
-          className="titulo-impacto hero-titulo text-[clamp(2.5rem,10vw,7rem)] lg:text-[clamp(3.6rem,5.6vw,6.25rem)] text-white"
+          className="titulo-impacto hero-titulo text-[clamp(2.5rem,10vw,7rem)] lg:text-[clamp(3rem,4.4vw,4.25rem)] text-white"
         >
           {LINHAS.map((linha, i) => (
             <span key={i} className="linha">
@@ -51,38 +68,6 @@ export const Hero: React.FC<HeroProps> = () => {
             </span>
           ))}
         </h1>
-      </div>
-
-      {/* Celular e tablet: versão vertical (9:16) da mesma cena, ocupando a primeira tela inteira */}
-      <div className="lg:hidden absolute inset-0 hero-foto">
-        <img
-          src="/hero-rua-vertical.webp"
-          srcSet="/hero-rua-vertical-720.webp 720w, /hero-rua-vertical.webp 1144w"
-          sizes="100vw"
-          alt="Cuia de chimarrão e celular com o app da BahCar sobre um carro, numa rua de paralelepípedo ao anoitecer, com um Onix estacionado"
-          width={1144}
-          height={2048}
-          decoding="async"
-          fetchPriority="high"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-          loading="eager"
-        />
-      </div>
-
-      {/* Desktop: a foto ocupa a tela inteira; o título fica sobre o céu */}
-      <div className="hidden lg:block absolute inset-0 hero-foto">
-        <img
-          src="/hero-rua-1920.webp"
-          srcSet="/hero-rua-1920.webp 1920w, /hero-rua-2912.webp 2912w"
-          sizes="100vw"
-          width={2912}
-          height={1640}
-          decoding="async"
-          fetchPriority="high"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover object-bottom"
-          loading="eager"
-        />
       </div>
     </section>
   );
