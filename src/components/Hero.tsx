@@ -49,18 +49,18 @@ export const Hero: React.FC<HeroProps> = () => {
           height={1340}
           decoding="async"
           fetchPriority="high"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-center origin-top scale-[1.15]"
           loading="eager"
         />
         <div className="absolute inset-0 bg-black/55" aria-hidden="true" />
       </div>
 
       <IndicadorRolagem />
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-28 sm:pt-32 lg:pt-24">
+      <div className="relative z-10 w-full px-5 sm:px-8 lg:px-10 xl:px-14 pt-24 sm:pt-28 lg:pt-24">
         <h1
           data-reveal="linhas"
           style={{ ['--d' as string]: 2 }}
-          className="titulo-impacto hero-titulo text-[clamp(2.5rem,10vw,7rem)] lg:text-[clamp(3rem,4.4vw,4.25rem)] text-white"
+          className="titulo-impacto hero-titulo text-[clamp(2.5rem,10.2vw,7rem)] lg:text-[clamp(4rem,5.5vw,6.5rem)] text-white"
         >
           {LINHAS.map((linha, i) => (
             <span key={i} className="linha">
